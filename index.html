@@ -4,9 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的履歷</title>
+    
+    <style>
+        body { 
+            max-width: 800px;           /* 限制最大寬度 */
+            margin: 0 auto;             /* 讓整個網頁置中 */
+            text-align: center;         /* 讓文字內容置中 */
+            padding: 40px 20px; 
+            font-family: "Microsoft JhengHei", sans-serif; /* 微軟正黑體 */
+            background-color: #E6F3FF;  /* 淺藍色背景 */
+            color: #333; 
+        }
+
+        /* 讓導覽列也漂亮一點，把原本的點點拿掉 */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        nav ul li {
+            display: inline-block; /* 變成橫排 */
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        /* 讓作品集的卡片排版整齊 */
+        .portfolio-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 10px;
+            background: white;
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header (包含導覽列) -->
     <header>
         <nav>
             <ul>
@@ -19,15 +61,13 @@
         </nav>
     </header>
 
-    <!-- 關於我 (About Me) -->
     <section id="about">
         <h1>吴政廷</h1>
         <p>414570552</p>
     </section>
     
-    <!-- 技能展示 (Skills) -->
     <section id="skills">
-    <h2>技能展示 (B版 - 標籤雲)</h2>
+    <h2>技能展示</h2>
     <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:20px 0;">
         <span style="background:#FF6B6B;color:white;padding:8px 15px;border-radius:20px;">跳舞</span>
         <span style="background:#FFD166;color:black;padding:8px 15px;border-radius:20px;">畫畫</span>
@@ -37,7 +77,6 @@
     </div>
     </section>
 
-    <!-- 經歷/時間軸 (Experience) -->
     <section id="experience">
         <h2>工作經歷</h2>
         <article>
@@ -52,23 +91,19 @@
         </article>
     </section>
 
-    <!-- 作品集 (Portfolio) -->
     <section id="portfolio">
         <h2>作品集</h2>
         <div class="portfolio-grid">
-            <!-- 卡片 1 -->
             <div class="card">
                 <h3>專案名稱 1</h3>
                 <p>專案簡介...</p>
                 <a href="#">查看更多</a>
             </div>
-            <!-- 卡片 2 -->
             <div class="card">
                 <h3>專案名稱 2</h3>
                 <p>專案簡介...</p>
                 <a href="#">查看更多</a>
             </div>
-            <!-- 卡片 3 -->
             <div class="card">
                 <h3>專案名稱 3</h3>
                 <p>專案簡介...</p>
@@ -77,7 +112,6 @@
         </div>
     </section>
 
-    <!-- 聯絡方式 (Contact) -->
     <section id="contact">
         <h2>聯絡方式</h2>
         <p>Email: example@email.com</p>
