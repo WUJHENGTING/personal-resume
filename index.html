@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的履歷</title>
+</head>
+<body>
+    <!-- Header (包含導覽列) -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">關於我</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#experience">經歷</a></li>
+                <li><a href="#portfolio">作品集</a></li>
+                <li><a href="#contact">聯絡方式</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 關於我 (About Me) -->
+    <section id="about">
+        <h1>吴政廷</h1>
+        <p>414570552</p>
+    </section>
+    
+    <!-- 技能展示 (Skills) -->
+    <section id="skills">
+        <h2>技能展示</h2>
+        <ul>
+            <li>HTML / CSS</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>Git / GitHub</li>
+        </ul>
+    </section>
+
+    <!-- 經歷/時間軸 (Experience) -->
+    <section id="experience">
+        <h2>工作經歷</h2>
+        <article>
+            <h3>職位名稱 - 公司名稱</h3>
+            <span>2022 - 現在</span>
+            <p>工作內容描述與成就...</p>
+        </article>
+        <article>
+            <h3>職位名稱 - 公司名稱</h3>
+            <span>2020 - 2022</span>
+            <p>工作內容描述與成就...</p>
+        </article>
+    </section>
+
+    <!-- 作品集 (Portfolio) -->
+    <section id="portfolio">
+        <h2>作品集</h2>
+        <div class="portfolio-grid">
+            <!-- 卡片 1 -->
+            <div class="card">
+                <h3>專案名稱 1</h3>
+                <p>專案簡介...</p>
+                <a href="#">查看更多</a>
+            </div>
+            <!-- 卡片 2 -->
+            <div class="card">
+                <h3>專案名稱 2</h3>
+                <p>專案簡介...</p>
+                <a href="#">查看更多</a>
+            </div>
+            <!-- 卡片 3 -->
+            <div class="card">
+                <h3>專案名稱 3</h3>
+                <p>專案簡介...</p>
+                <a href="#">查看更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡方式 (Contact) -->
+    <section id="contact">
+        <h2>聯絡方式</h2>
+        <p>Email: example@email.com</p>
+        <p>Phone: 0912-345-678</p>
+        <form action="#" method="post">
+            <label for="name">姓名：</label>
+            <input type="text" id="name" name="name" required><br>
+            
+            <label for="email">Email：</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="message">訊息：</label>
+            <textarea id="message" name="message" required></textarea><br>
+            
+            <button type="submit">發送訊息</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 我的履歷網站. All rights reserved.</p>
+    </footer>
+</body>
+</html>
