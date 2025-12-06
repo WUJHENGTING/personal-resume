@@ -3,135 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的履歷</title>
+    <title>吳政廷 | 個人履歷</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 新增：引入 Font Awesome 圖示庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        body { 
-            max-width: 800px;           /* 限制最大寬度 */
-            margin: 0 auto;             /* 讓整個網頁置中 */
-            text-align: center;         /* 讓文字內容置中 */
-            padding: 40px 20px; 
-            font-family: "Microsoft JhengHei", sans-serif; /* 微軟正黑體 */
-            background-color: #E6F3FF;  /* 淺藍色背景 */
-            color: #333; 
+        :root {
+            --bg-color: #fdfbf7; /* 溫暖的米白色背景 */
+            --sidebar-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-secondary: #666666;
+            --accent-color: #d4a373; /* 質感金棕色 */
+            --border-color: #e5e5e5;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        /* 讓導覽列也漂亮一點，把原本的點點拿掉 */
-        nav ul {
-            list-style: none;
+        * {
+            box-sizing: border-box;
+            margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 18px; /* 修改：整體字體變大 */
+        }
+
+        /* 佈局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            padding: 40px 20px;
+        }
+
+        /* 左側側邊欄 (個人資訊) */
+        .sidebar {
+            background: var(--sidebar-bg);
+            padding: 40px 30px;
+            border-radius: 24px; /* 修改：圓角 */
+            position: sticky;
+            top: 40px;
+            height: fit-content;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .profile-name {
+            font-size: 2.4rem; /* 修改：名字字體變大 */
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .profile-id {
+            font-size: 1.1rem; /* 修改：ID字體變大 */
+            color: var(--accent-color);
+            font-weight: 500;
             margin-bottom: 30px;
+            display: block;
+            letter-spacing: 1px;
         }
-        nav ul li {
-            display: inline-block; /* 變成橫排 */
-            margin: 0 15px;
+
+        .contact-info {
+            text-align: left;
+            margin-top: 30px;
+            font-size: 1rem; /* 修改：聯絡資訊字體變大 */
         }
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+
+        .contact-item {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
         }
         
-        /* 讓作品集的卡片排版整齊 */
-        .portfolio-grid {
+        .contact-item strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.9rem; /* 修改：標題字體變大 */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-links {
+            margin-top: 30px;
             display: flex;
+            flex-direction: column; /* 修改：垂直排列以適應長文字 */
+            gap: 10px;
+            align-items: center;
+        }
+
+        .social-btn {
+            width: 100%; /* 修改：寬度填滿 */
+            padding: 0 20px; /* 修改：增加左右內距 */
+            height: 45px;
+            border-radius: 50px; /* 修改：更圓潤的膠囊狀 */
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: 1px solid var(--border-color);
+            gap: 10px; /* 新增：讓圖示與文字之間有間距 */
+        }
+
+        .social-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        /* 右側主要內容 */
+        .main-content {
+            padding-top: 10px;
+        }
+
+        /* 導覽列 */
+        nav {
+            margin-bottom: 50px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 1.1rem; /* 修改：導覽列字體變大 */
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* 區塊通用樣式 */
+        section {
+            margin-bottom: 60px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h2 {
+            font-size: 1.8rem; /* 修改：標題字體變大 */
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* 技能區塊 */
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-pill {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 10px 24px; /* 修改：內距增加 */
+            border-radius: 50px; /* 修改：更圓潤的膠囊狀 */
+            font-size: 1rem; /* 修改：字體變大 */
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* 經歷/學歷區塊 */
+        .timeline-item {
+            background: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px; /* 修改：圓角 */
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
             flex-wrap: wrap;
         }
-        .card {
-            border: 1px solid #ccc;
-            padding: 15px;
-            border-radius: 10px;
+
+        .timeline-header h3 {
+            font-size: 1.4rem; /* 修改：標題字體變大 */
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            font-size: 1rem; /* 修改：日期字體變大 */
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        /* 作品集網格 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-card {
             background: white;
-            width: 200px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px; /* 修改：圓角 */
+            padding: 30px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .portfolio-card:hover {
+            box-shadow: var(--card-shadow);
+            transform: translateY(-5px);
+        }
+
+        .portfolio-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem; /* 修改：標題字體變大 */
+        }
+
+        .portfolio-link {
+            margin-top: 20px;
+            display: inline-block;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem; /* 修改：連結字體變大 */
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 2px;
+        }
+
+        /* 表單樣式 */
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px; /* 修改：圓角 */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem; /* 修改：標籤字體變大 */
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px; /* 修改：輸入框變大 */
+            border: 1px solid var(--border-color);
+            border-radius: 10px; /* 修改：圓角 */
+            background: #fafafa;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: white;
+        }
+
+        .btn-submit {
+            background: var(--text-main);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1rem; /* 修改：按鈕字體變大 */
+            border-radius: 10px; /* 修改：圓角 */
+            cursor: pointer;
+            transition: background 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            font-size: 0.9rem; /* 修改：頁尾字體變大 */
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+        }
+
+        /* RWD */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+                margin-bottom: 30px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">關於我</a></li>
-                <li><a href="#skills">技能</a></li>
-                <li><a href="#experience">經歷</a></li>
-                <li><a href="#portfolio">作品集</a></li>
-                <li><a href="#contact">聯絡方式</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="about">
-        <h1>吴政廷</h1>
-        <p>414570552</p>
-    </section>
-    
-    <section id="skills">
-    <h2>技能展示</h2>
-    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:20px 0;">
-        <span style="background:#FF6B6B;color:white;padding:8px 15px;border-radius:20px;">跳舞</span>
-        <span style="background:#FFD166;color:black;padding:8px 15px;border-radius:20px;">畫畫</span>
-        <span style="background:#4D96FF;color:white;padding:8px 15px;border-radius:20px;">Word</span>
-        <span style="background:#6BCB77;color:white;padding:8px 15px;border-radius:20px;">Excel</span>
-        <span style="background:#6C5CE7;color:white;padding:8px 15px;border-radius:20px;">程式設計</span>
+    <div class="container">
+        <!-- 左側個人資訊欄 -->
+        <aside class="sidebar">
+            <h1 class="profile-name">吳政廷</h1>
+            <span class="profile-id">ID: 414570552</span>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    wzt0307@gmail.com
+                </div>
+                <div class="contact-item">
+                    <strong>Phone</strong>
+                    0911389320
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="mailto:wzt0307@gmail.com" class="social-btn" title="Email">
+                    <i class="fa-solid fa-envelope"></i> Email
+                </a>
+                <a href="https://www.instagram.com/mixxvoid0307?igsh=bXVwZnV5a2Jvdzdz" target="_blank" class="social-btn" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://github.com/WUJHENGTING/personal-resume/pulls?q=is%3Apr+is%3Aclosed" target="_blank" class="social-btn" title="GitHub">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+            </div>
+        </aside>
+
+        <!-- 右側主要內容 -->
+        <main class="main-content">
+            <nav>
+                <ul>
+                    <li><a href="#skills">技能</a></li>
+                    <li><a href="#experience">學歷與經歷</a></li>
+                    <li><a href="#portfolio">作品集</a></li>
+                    <li><a href="#contact">聯絡我</a></li>
+                </ul>
+            </nav>
+
+            <section id="skills">
+                <h2>技能專長</h2>
+                <div class="skills-wrapper">
+                    <span class="skill-pill">🏀 打籃球</span>
+                    <span class="skill-pill">🏐 打排球</span>
+                    <span class="skill-pill">💻 程式設計</span>
+                </div>
+            </section>
+
+            <section id="experience">
+                <h2>學歷背景</h2>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3>輔仁大學</h3>
+                        <span class="timeline-date">2022 - 現在</span>
+                    </div>
+                    <p style="color: #666; font-size: 1rem;">希望4年能準時畢業</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3>嘉義高中</h3>
+                        <span class="timeline-date">2020 - 2022</span>
+                    </div>
+                    <p style="color: #666; font-size: 1rem;">第不知道幾屆 網球社 副社長</p>
+                </div>
+            </section>
+
+            <section id="portfolio">
+                <h2>精選作品</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card">
+                        <div>
+                            <h3>APX 化學銅牌</h3>
+                            <p style="color: #666; font-size: 1rem;">根本只是因為我報初級。</p>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1yLGXsnLXx11hL34Dj4F9wL93gsQdlnaJ/view?usp=sharing" target="_blank" class="portfolio-link">查看詳情</a>
+                    </div>
+                    <div class="portfolio-card">
+                        <div>
+                            <h3>專案名稱 2</h3>
+                            <p style="color: #666; font-size: 1rem;">這是一個令人印象深刻的專案簡介，簡述使用的技術與成果。</p>
+                        </div>
+                        <a href="#" class="portfolio-link">查看詳情</a>
+                    </div>
+                    <div class="portfolio-card">
+                        <div>
+                            <h3>專案名稱 3</h3>
+                            <p style="color: #666; font-size: 1rem;">這是一個令人印象深刻的專案簡介，簡述使用的技術與成果。</p>
+                        </div>
+                        <a href="#" class="portfolio-link">查看詳情</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>聯絡方式</h2>
+                <p style="margin-bottom: 20px; color: #666; font-size: 1rem;">隨時歡迎與我聯繫討論合作機會！</p>
+                <form action="#" method="post" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">訊息</label>
+                        <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">發送訊息</button>
+                </form>
+            </section>
+        </main>
     </div>
-    </section>
-
-    <section id="experience">
-        <h2>工作經歷</h2>
-        <article>
-            <h3>職位名稱 - 公司名稱</h3>
-            <span>2022 - 現在</span>
-            <p>工作內容描述與成就...</p>
-        </article>
-        <article>
-            <h3>職位名稱 - 公司名稱</h3>
-            <span>2020 - 2022</span>
-            <p>工作內容描述與成就...</p>
-        </article>
-    </section>
-
-    <section id="portfolio">
-        <h2>作品集</h2>
-        <div class="portfolio-grid">
-            <div class="card">
-                <h3>專案名稱 1</h3>
-                <p>專案簡介...</p>
-                <a href="#">查看更多</a>
-            </div>
-            <div class="card">
-                <h3>專案名稱 2</h3>
-                <p>專案簡介...</p>
-                <a href="#">查看更多</a>
-            </div>
-            <div class="card">
-                <h3>專案名稱 3</h3>
-                <p>專案簡介...</p>
-                <a href="#">查看更多</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>聯絡方式</h2>
-        <p>Email: example@email.com</p>
-        <p>Phone: 0912-345-678</p>
-        <form action="#" method="post">
-            <label for="name">姓名：</label>
-            <input type="text" id="name" name="name" required><br>
-            
-            <label for="email">Email：</label>
-            <input type="email" id="email" name="email" required><br>
-            
-            <label for="message">訊息：</label>
-            <textarea id="message" name="message" required></textarea><br>
-            
-            <button type="submit">發送訊息</button>
-        </form>
-    </section>
 
     <footer>
-        <p>&copy; 2023 我的履歷網站. All rights reserved.</p>
+        <p>&copy; 2024 吳政廷. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
